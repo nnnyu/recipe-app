@@ -1,5 +1,0 @@
-module.exports = {
-    watch: true,
-    devtool: 'inline-source-map',
-};
-OPENAI_API_KEY=sk-xxxxxxxxxxxxxx
