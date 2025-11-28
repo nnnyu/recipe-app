@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>レシピ提案</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1em;
+      background: #fafafa;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      margin-bottom: 0.6em;
+    }
+
+    .ingredient-item {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 10px 12px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+
+    .ingredient-name {
+      font-size: 15px;
+    }
+
+    .delete-btn {
+      background: #ff4444;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .delete-btn:hover {
+      background: #dd2222;
+    }
+
+    #getRecipe {
+      margin-top: 1em;
+      padding: 10px 18px;
+      font-size: 16px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #getRecipe:hover {
+      background: #0066d3;
+    }
+
+    #loading {
+      display: none;
+      margin-top: 1.5em;
+      font-size: 16px;
+      color: #555;
+    }
+
+    #recipe-card {
+      display: none;
+      margin-top: 2em;
+      padding: 1.2em;
+      background: #fff;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+    }
+
+    #recipe-card ul, #recipe-card ol {
+      margin-left: 1.2em;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>保存済みの食材</h1>
+  <div id="ingredients">読み込み中…</div>
+
+  <button id="getRecipe">この食材でレシピを提案</button>
+
+  <div id="loading">⏳ レシピを生成中…</div>
+
+  <div id="recipe-card">
+    <h2>提案されたレシピ</h2>
+    <div id="recipe"></div>
+  </div>
+
+ <script type="module" src="./main.js"></script>
+
+<link rel="manifest" href="/manifest.json">
+
+<meta name="theme-color" content="#ffffff">
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("/service-worker.js")
+      .then(() => console.log("Service Worker registered"));
+  }
+</script>
